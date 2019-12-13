@@ -1,67 +1,52 @@
 <?php
 /**
- * @package Adserv
- *
- * GLOBAL CONFIGURATION
- *
- * This file defines a singleton class that is used for dependency injection
- * into the framework dispatcher.
- *
- * For the most part the settings here shouldn't be changed.  The static
- * properties can be changed in either _app_config.php or _machine_config.php
- * depending on whether the setting is application-wide or machine-specific
+ * @package 
+ 
  */
 
 /**
- * GlobalConfig is a singleton containing the global variables.
- * In general settings should not be changed in this file and should instead
- * be made in either _app_config.php or _machine_config.php
- *
- * For unit testing this object can be swapped out with another object entirely
- * to allow for mock data, mockput, etc as needed
- *
  * @package Adserv
  * @author ClassBuilder
  */
 class GlobalConfig
 {
-	/** @var set to true to send debug info to the browser */
+	/** @var set  */
 	public static $DEBUG_MODE = false;
 
-	/** @var default action is the controller.method fired when no route is specified */
+	/** @var default */
 	public static $DEFAULT_ACTION = "Default.Home";
 
-	/** @var routemap is an array of patterns and routes */
+	/** @var routemap */
 	public static $ROUTE_MAP;
 
-	/** @var specify the template render engine (Smarty, Savant, PHP) */
+	/** @var specify */
 	public static $TEMPLATE_ENGINE = 'SmartyRenderEngine';
 
-	/** @var template path is the physical location of view template files */
+	/** @var template  */
 	public static $TEMPLATE_PATH;
 
-	/** @var template cache path is the physical location where templates can be cached */
+	/** @var template */
 	public static $TEMPLATE_CACHE_PATH;
 
-	/** @var app root is the root directory of the application */
+	/** @var app  */
 	public static $APP_ROOT;
 
-	/** @var root url of the application */
+	/** @var root  */
 	public static $ROOT_URL;
 
-	/** @var ConnectionSetting object containign settings for the DB connection **/
+	/** @var ConnectionSetting o**/
 	public static $CONNECTION_SETTING;
 	
-	/** @var Setting to true will convert all NULL values to an empty string (set to false with caution!)  **/
+	/** @var Setting **/
 	public static $CONVERT_NULL_TO_EMPTYSTRING = true;
 
-	/** @var ICache (optional) object for level 2 caching (for example memcached) **/
+	/** @var ICache **/
 	public static $LEVEL_2_CACHE;
 
-	/** @var string if level 2 cache is specified, a temp path for writing files */
+	/** @var string  */
 	public static $LEVEL_2_CACHE_TEMP_PATH;
 
-	/** @var int if level 2 cache is specified, the timeout in seconds*/
+	/** @var int*/
 	public static $LEVEL_2_CACHE_TIMEOUT = 15;
 
 	private static $INSTANCE;
@@ -72,15 +57,12 @@ class GlobalConfig
 	private $phreezer;
 	private $render_engine;
 
-	/** prevents external construction */
+
 	private function __construct(){}
 
-	/** prevents external cloning */
+	
 	private function __clone() {}
 
-	/**
-	 * Initialize the GlobalConfig object
-	 */
 	static function Init()
 	{
 		if (!self::$IS_INITIALIZED)
@@ -98,7 +80,6 @@ class GlobalConfig
 	}
 
 	/**
-	 * Returns an instance of the GlobalConfig singleton
 	 * @return GlobalConfig
 	 */
 	static function GetInstance()
@@ -111,7 +92,6 @@ class GlobalConfig
 	}
 
 	/**
-	 * Returns the context, used for storing session information
 	 * @return Context
 	 */
 	function GetContext()
@@ -124,7 +104,6 @@ class GlobalConfig
 	}
 
 	/**
-	 * Returns a URL Writer used to parse/generate URLs
 	 * @return UrlWriter
 	 */
 	function GetRouter()
@@ -139,7 +118,6 @@ class GlobalConfig
 
 
 	/**
-	 * Returns the requested action requested by the user
 	* @return string
 	*/
 	function GetAction()
@@ -149,7 +127,6 @@ class GlobalConfig
 	}
 
 	/**
-	 * Returns the default action if none is specified by the user
 	 * @return string
 	 */
 	function GetDefaultAction()
@@ -158,7 +135,6 @@ class GlobalConfig
 	}
 
 	/**
-	 * Returns the Phreezer persistance layer
 	 * @return Phreezer
 	 */
 	function GetPhreezer()
